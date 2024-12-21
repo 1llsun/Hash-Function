@@ -94,3 +94,27 @@ bool HashTable::search(int key)
 
     return false;
 }
+void HashTable::display() 
+{
+    cout << "Hash Table:" << endl;
+
+    for (int i = 0; i < size; i++) 
+    {
+        cout << i << ": ";
+        Node* temp = table[i];
+        if (temp == nullptr) 
+        {
+            cout << "Empty";
+        }
+        else 
+        {
+            while (temp != nullptr) 
+            {
+                cout << temp->getData() << " -> ";
+                temp = temp->getNext();
+            }
+            cout << "NULL";
+        }
+        cout << endl;
+    }
+}
