@@ -45,3 +45,35 @@ void Node::setPrev(Node* prev)
 {
     this->prev = prev;
 }
+
+HashTable::HashTable(int size) 
+{
+    this->size = size;
+    for (int i = 0; i < size; i++) 
+    {
+        table[i] = NULL;
+    }
+}
+
+
+int HashTable::hashFunction(int key)
+{
+    return key % size;
+}
+
+void HashTable::insert(int key) 
+{
+    int index = hashFunction(key);
+
+    Node* newNode = new Node(key);
+
+    newNode->setNext(table[index]);
+
+    if (table[index] != nullptr) 
+    {
+        table[index]->setPrev(newNode);
+    }
+    table[index] = newNode;
+
+    cout << "Inserted " << key << " at index " << index << endl;
+}
