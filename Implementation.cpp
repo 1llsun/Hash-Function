@@ -77,3 +77,20 @@ void HashTable::insert(int key)
 
     cout << "Inserted " << key << " at index " << index << endl;
 }
+
+bool HashTable::search(int key) 
+{
+    int index = hashFunction(key);
+    Node* temp = table[index];
+
+    while (temp != nullptr) 
+    {
+        if (temp->getData() == key) 
+        {
+            return true;
+        }
+        temp = temp->getNext();
+    }
+
+    return false;
+}
